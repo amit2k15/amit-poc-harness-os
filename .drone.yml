@@ -1,0 +1,10 @@
+kind: pipeline
+type: docker
+name: check-python-version
+
+steps:
+  - name: check version
+    image: python:3.11
+    commands:
+      - python --version
+      - python hello.py
