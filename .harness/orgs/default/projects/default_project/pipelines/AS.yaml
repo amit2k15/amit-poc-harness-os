@@ -31,7 +31,7 @@ pipeline:
                   identifier: Run_1
                   spec:
                     connectorRef: MyGCP
-                    image: python:3.9.21
+                    image: python:3.10-slim
                     shell: Sh
                     command: python hello.py
   properties:
