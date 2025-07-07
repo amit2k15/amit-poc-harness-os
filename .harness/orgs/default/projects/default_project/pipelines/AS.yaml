@@ -27,8 +27,8 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Run_1
-                  identifier: Run_1
+                  name: Run
+                  identifier: Run
                   spec:
                     connectorRef: MyGCP
                     image: python:3.10-slim
