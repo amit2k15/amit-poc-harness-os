@@ -1,0 +1,41 @@
+pipeline:
+  name: AS
+  identifier: AS
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: As
+        identifier: As
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:3.10
+                    shell: Sh
+                    command: python hello.py
+  properties:
+    ci:
+      codebase:
+        repoName: account.harness-filestore
+        build: <+input>
