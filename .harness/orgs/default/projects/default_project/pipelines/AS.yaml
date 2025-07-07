@@ -30,7 +30,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: docker-delegate
                     image: python:3.9.21
                     shell: Sh
                     command: python hello.py
