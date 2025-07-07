@@ -30,7 +30,7 @@ pipeline:
                   name: Run
                   identifier: Run
                   spec:
-                    connectorRef: MyGCP
+                    connectorRef: MyDockerHub
                     image: python:3.10-slim
                     shell: Sh
                     command: python hello.py
