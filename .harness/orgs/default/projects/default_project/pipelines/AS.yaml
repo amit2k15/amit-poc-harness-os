@@ -31,7 +31,7 @@ pipeline:
                   identifier: Run_1
                   spec:
                     connectorRef: account.harnessImage
-                    image: python:3.10
+                    image: europe-docker.pkg.dev/ssv-rtl-devops-registry-624/release/python:3.13.0
                     shell: Sh
                     command: python hello.py
   properties:
