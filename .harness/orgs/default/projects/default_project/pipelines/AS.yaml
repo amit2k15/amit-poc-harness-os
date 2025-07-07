@@ -30,7 +30,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: docker-delegate
+                    connectorRef: MyGCP
                     image: python:3.9.21
                     shell: Sh
                     command: python hello.py
