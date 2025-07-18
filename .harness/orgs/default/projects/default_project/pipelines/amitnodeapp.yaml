@@ -1,41 +1,47 @@
 pipeline:
-  name: amit-node-app
+  name: Amit Node App Pipeline
   identifier: amitnodeapp
   projectIdentifier: default_project
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: gudul
-        build: <+input>
   stages:
     - stage:
-        name: Docker Build
-        identifier: Docker_Build
-        description: ""
+        name: Build Node App
+        identifier: Build_Node_App
         type: CI
         spec:
-          cloneCodebase: true
-          caching:
-            enabled: true
-            override: true
-          buildIntelligence:
-            enabled: true
-          platform:
-            os: Linux
-            arch: Arm64
-          runtime:
-            type: Docker
-            spec: {}
           execution:
             steps:
               - step:
+                  name: Install Dependencies
+                  identifier: Install_Dependencies
                   type: Run
-                  name: Run_1
-                  identifier: Run_1
                   spec:
                     shell: Sh
-                    command: docker ps
-        delegateSelectors:
-          - docker-delegate
+                    command: npm install
+              - step:
+                  name: Run Tests
+                  identifier: Run_Tests
+                  type: Run
+                  spec:
+                    shell: Sh
+                    command: npm test
+              - step:
+                  name: Build Project
+                  identifier: Build_Project
+                  type: Run
+                  spec:
+                    shell: Sh
+                    command: npm run build
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
